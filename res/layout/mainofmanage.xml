@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="#000034"
+              android:layout_height="match_parent">
+<TextView
+        android:id="@+id/top_tip"
+        android:text="top_tip"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:id="@+id/view_of_main"
+                android:layout_weight="8"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+            <ImageButton
+                    android:id="@+id/btn_main_addRecord"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/addrecord"
+                    android:layout_height="match_parent"/>
+            <ImageButton
+                    android:id="@+id/btn_main_historyBills"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/historybills"
+                    android:layout_height="match_parent"/>
+            <ImageButton
+                    android:id="@+id/btn_main_nowTotal"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/nowtotal"
+                    android:layout_height="match_parent"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
