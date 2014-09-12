@@ -1,6 +1,8 @@
 package com.example.managedollar;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ public class RegisterActivity extends Activity {
     private Button submit;
     private String name, psw;
     private ProgressDialog mpd;
+    private Dialog ad;
     httpRequest mHttpRequest = new httpRequest();
     Handler handler = new Handler() {
         @Override
@@ -45,6 +48,9 @@ public class RegisterActivity extends Activity {
                 }
             } else {
                 Log.i("错误代码", msg.obj.toString());
+                mpd.dismiss();
+                ad.show();
+                ad.setCancelable(true);
             }
             super.handleMessage(msg);
         }
@@ -59,7 +65,12 @@ public class RegisterActivity extends Activity {
             @Override
             public void onClick(View v) {
                 name = userName.getText().toString();
+
                 psw = password.getText().toString();
+                ad = new AlertDialog.Builder(RegisterActivity.this).
+                        setTitle("登陆出错").
+                        setMessage("服务器连接超时").
+                        create();
                 if (name.isEmpty()) {
                     userName.setHint("请输入用户名");
                 } else if (psw.isEmpty()) {

@@ -72,7 +72,7 @@
                 android:text="@string/login"
                 android:textSize="20sp"
                 android:textColor="#000000"
-                android:background="#cccccc"
+                android:background="@drawable/btn_bg"
                 android:layout_marginRight="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -81,7 +81,7 @@
                 android:layout_weight="1"
                 android:textSize="20sp"
                 android:textColor="#000000"
-                android:background="#cccccc"
+                android:background="@drawable/btn_bg"
                 android:layout_marginLeft="15dp"
                 android:text="@string/quit"
                 android:layout_width="wrap_content"

@@ -19,6 +19,7 @@ public class httpRequest {
         params.put("password", password);
 
         FinalHttp fh = new FinalHttp();
+        fh.configTimeout(5000);
         fh.post("http://" + ip + ":8080/servlets/userLogin", params, new AjaxCallBack<Object>() {
             @Override
             public void onSuccess(Object o) {
@@ -49,6 +50,7 @@ public class httpRequest {
         params.put("userName", userName);
         params.put("password", password);
         FinalHttp fh = new FinalHttp();
+        fh.configTimeout(5000);
         fh.post("http://" + ip + ":8080/servlets/userRegister", params, new AjaxCallBack<Object>() {
             @Override
             public void onSuccess(Object o) {

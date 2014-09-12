@@ -1,6 +1,8 @@
 package com.example.managedollar;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.example.managedollar.http.httpRequest;
 
 public class MyActivity extends Activity implements View.OnClickListener {
@@ -21,6 +24,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
     private TextView register;
     private Button login, quit;
     private ProgressDialog mpd;
+    private Dialog ad;
     private String username, password;
     httpRequest mHttpRequest = new httpRequest();
     private String result = null;
@@ -46,6 +50,9 @@ public class MyActivity extends Activity implements View.OnClickListener {
                 }
             } else {
                 Log.i("MyActivity login : ", msg.obj.toString());
+                mpd.dismiss();
+                ad.show();
+                ad.setCancelable(true);
             }
             super.handleMessage(msg);
         }
@@ -55,7 +62,9 @@ public class MyActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
+        ad = new AlertDialog.Builder(MyActivity.this).setTitle("登陆出错").
+                setMessage("服务器连接超时").
+                create();
         setupViewComponent();
     }
 
@@ -78,6 +87,15 @@ public class MyActivity extends Activity implements View.OnClickListener {
             case R.id.btn_main_login:
                 username = editUserName.getText().toString();
                 password = editPassword.getText().toString();
+
+                if (username.equals("")){
+                    Toast.makeText(this,"请输入用户名",Toast.LENGTH_LONG).show();
+                    break;
+                }else if (password.equals("")){
+                    Toast.makeText(this,"请输入密码",Toast.LENGTH_LONG).show();
+                    break;
+                }
+
                 mpd = ProgressDialog.show(this, "提示", "正在登陆...");
                 mHttpRequest.userLogin(mHandler, username, password);
                 break;
