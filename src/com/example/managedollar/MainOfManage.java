@@ -5,8 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.View;
+import android.view.*;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +31,25 @@ public class MainOfManage extends Activity implements View.OnClickListener {
         keyuser = bundle.getString("userName");
         setContentView(R.layout.mainofmanage);
         setupViewComponent();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.about:
+                break;
+            case R.id.exit:
+                System.exit(0);
+        }
+        return true;
     }
 
     private void setupViewComponent() {

@@ -84,6 +84,14 @@ public class RegisterActivity extends Activity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        userName.setText("");
+        password.setText("");
+        super.onResume();
+    }
+
+
     private void setupComponent() {
         userName = (EditText) findViewById(R.id.txt_reg_userName);
         password = (EditText) findViewById(R.id.txt_reg_password);

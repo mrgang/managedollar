@@ -68,6 +68,13 @@ public class MyActivity extends Activity implements View.OnClickListener {
         setupViewComponent();
     }
 
+    @Override
+    protected void onResume() {
+        editUserName.setText("");
+        editPassword.setText("");
+        super.onResume();
+    }
+
     private void setupViewComponent() {
 
         editUserName = (EditText) findViewById(R.id.txt_main_userName);
